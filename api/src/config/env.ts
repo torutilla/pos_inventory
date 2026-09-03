@@ -1,21 +1,21 @@
 import "dotenv/config";
 
-const requiredEnvVariables = [
-    "DATABASE_URL",
-    "PORT",
-] as const;
+function getRequiredEnv(name: string): string {
+    const value = process.env[name];
 
-for (const variableName of requiredEnvVariables) {
-    if (!process.env[variableName]) {
+    if (!value) {
         throw new Error(
-            `Missing required environment variable: ${variableName}`,
+            `Missing required environment variable: ${name}`,
         );
     }
+
+    return value;
 }
 
 const env = {
-    port: Number(process.env.PORT),
-    databaseUrl: process.env.DATABASE_URL,
+    port: Number(getRequiredEnv("PORT")),
+    databaseUrl: getRequiredEnv("DATABASE_URL"),
+    jwtSecret: getRequiredEnv("JWT_SECRET"),
     nodeEnv: process.env.NODE_ENV ?? "development",
 };
 

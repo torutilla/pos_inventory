@@ -24,7 +24,9 @@ function errorHandler(
     res.status(statusCode).json({
         success: false,
         message:
-            error.message || "Internal server error",
+            error instanceof AppError
+                ? error.message
+                : "Internal server error",
     });
 }
 
