@@ -6,8 +6,8 @@
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsx index.ts",
-    "dev": "tsx watch index.ts",
+    "start": "tsx dist/server.js",
+    "dev": "tsx watch src/server.ts",
     "migrate:create": "node-pg-migrate create -j ts --migrations-dir migrations",
     "migrate:up": "node-pg-migrate up --database-url-var DATABASE_URL --migrations-dir migrations",
     "migrate:down": "node-pg-migrate down --database-url-var DATABASE_URL --migrations-dir migrations",
@@ -19,11 +19,14 @@
   "type": "module",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
     "express": "^5.2.1",
+    "helmet": "^8.3.0",
     "pg": "^8.23.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^26.4.1",
     "@types/pg": "^8.23.1",
@@ -31,7 +34,7 @@
     "dotenv": "^17.4.2",
     "node-pg-migrate": "^9.0.0",
     "ts-node": "^10.9.2",
-    "tsx": "^4.23.12",
+    "tsx": "^4.23.13",
     "typescript": "^7.0.2"
   }
 }

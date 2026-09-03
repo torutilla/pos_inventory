@@ -1,4 +1,4 @@
-import pool from "../src/config/database.js";
+import pool from "../src/db/database.js";
 async function seedSuppliers() {
     console.log("Seeding suppliers...");
 

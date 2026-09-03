@@ -1,5 +1,5 @@
 import "dotenv/config";
-import pool from "../src/config/database.js";
+import pool from "../src/db/database.js";
 import seedUsers from "./01_user.js";
 import seedCategories from "./02_categories.js";
 import seedSuppliers from "./03_suppliers.js";
