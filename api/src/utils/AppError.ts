@@ -1,14 +1,26 @@
-class AppError extends Error {
-  statusCode: number;
-  isOperational: boolean;
+import type { ValidationError } from "../types/api.js";
 
-  constructor(message: string, statusCode: number) {
+class AppError extends Error {
+  public readonly statusCode: number;
+  public readonly errors?: ValidationError[];
+
+  constructor(
+    message: string,
+    statusCode: number,
+    errors?: ValidationError[],
+  ) {
     super(message);
 
     this.statusCode = statusCode;
-    this.isOperational = true;
 
-    Error.captureStackTrace(this, this.constructor);
+    if (errors) {
+      this.errors = errors;
+    }
+
+    Object.setPrototypeOf(
+      this,
+      new.target.prototype,
+    );
   }
 }
 

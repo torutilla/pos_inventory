@@ -1,3 +1,8 @@
+export interface ValidationError {
+    field: string;
+    message: string;
+}
+
 export interface SuccessResponse<T> {
     success: true;
     message: string;
@@ -7,8 +12,5 @@ export interface SuccessResponse<T> {
 export interface ErrorResponse {
     success: false;
     message: string;
-    errors?: Array<{
-        field: string;
-        message: string;
-    }>;
+    errors?: ValidationError[] | undefined;
 }

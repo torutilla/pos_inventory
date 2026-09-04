@@ -1,7 +1,7 @@
 import type {
+    NextFunction,
     Request,
     Response,
-    NextFunction,
 } from "express";
 
 import AppError from "../utils/AppError.js";
@@ -27,6 +27,10 @@ function errorHandler(
             error instanceof AppError
                 ? error.message
                 : "Internal server error",
+        ...(error instanceof AppError &&
+            error.errors
+            ? { errors: error.errors }
+            : {}),
     });
 }
 
