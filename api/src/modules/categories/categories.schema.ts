@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const categoryIdParamsSchema = z.object({
+const categoryIdParamsSchema = z.object({
     id: z.uuid("Invalid category ID"),
 });
 

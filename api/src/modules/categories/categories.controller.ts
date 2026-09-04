@@ -85,6 +85,7 @@ export async function updateCategoryController(
     next: NextFunction,
 ): Promise<void> {
     try {
+
         const { id } = getValidatedParams<CategoryParams>(req);
 
         const category = await updateCategory(
